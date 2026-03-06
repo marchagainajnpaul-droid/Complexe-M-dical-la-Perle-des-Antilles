@@ -1,29 +1,31 @@
-# 🏥 Complexe Médical La Perle des Antilles
+#Gaina Marcha JN PAUL 
+#Technologie Web 1
+#Formateur ;Iclerson Nicolas
+#  Complexe Médical La Perle des Antilles
 
 Site web officiel du **Complexe Médical La Perle des Antilles** — une clinique offrant des soins médicaux premium pour toute la famille à Carrefour, Haïti.
 
 ---
 
-## 🌐 Démo en ligne
+##  Démo en ligne
 
-> Déployé sur **Netlify** : [votre-lien-netlify.netlify.app](https://votre-lien-netlify.netlify.app)
+> Déployé sur **Netlify** : https://complexemedicallaperledesantilles.netlify.app/
 
 ---
 
-## 📋 Description
+##  Description
 
 Site web multi-pages présentant les services médicaux de la clinique :
-- Informations sur les services
-- Prise de rendez-vous en ligne
-- Support multilingue (Français, Créole haïtien, Anglais)
-- Mode sombre / clair
-- Design responsive (mobile, tablette, desktop)
+ Informations sur les services
+ Prise de rendez-vous en ligne
+ Support multilingue (Français, Créole haïtien, Anglais)
+Mode sombre / clair
+ Design responsive (mobile, tablette, desktop)
 
 ---
 
-## 📁 Structure du projet
+## Structure du projet
 
-```
 complexe-medical/
 │
 ├── index.html                  # Page d'accueil
@@ -52,22 +54,22 @@ complexe-medical/
             └── all.min.css     # Font Awesome icons
 ```
 
----
 
-## ✨ Fonctionnalités
+
+##  Fonctionnalités
 
 | Fonctionnalité | Description |
 |---|---|
-| 🌙 Mode sombre/clair | Bascule avec sauvegarde dans localStorage |
-| 🌍 Multilingue | Français, Créole haïtien, Anglais |
-| 📅 Modal rendez-vous | Formulaire de prise de rendez-vous avec confirmation |
-| 📱 Responsive | Menu hamburger sur mobile, grilles adaptatives |
-| 💬 Bouton WhatsApp | Accès rapide via flottant |
-| 🎞️ Bannière animée | Slideshow d'images en CSS pur |
+|  Mode sombre/clair | Bascule avec sauvegarde dans localStorage |
+|  Multilingue | Français, Créole haïtien, Anglais |
+|  Modal rendez-vous | Formulaire de prise de rendez-vous avec confirmation |
+|  Responsive | Menu hamburger sur mobile, grilles adaptatives |
+|  Bouton WhatsApp | Accès rapide via flottant |
+|  Bannière animée | Slideshow d'images en CSS pur |
 
 ---
 
-## 🗂️ Pages
+##  Pages
 
 ### `index.html` — Accueil
 - Navbar avec navigation, dark mode, langue
@@ -106,57 +108,35 @@ complexe-medical/
 
 ---
 
-## 🚀 Déploiement sur Netlify
+##  Déploiement sur Netlify
 
 ### Méthode Drag & Drop
-1. Zipper ou préparer le dossier complet du projet
+1. la  préparation le dossier complet du projet
 2. Aller sur [netlify.com](https://netlify.com) → Se connecter
 3. Cliquer sur son site → **Deploys**
 4. Glisser-déposer le dossier dans la zone de déploiement
-5. ✅ Le site est en ligne en quelques secondes
+5.  Le site est en ligne 
 
-### Méthode GitHub (recommandée)
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-git remote add origin https://github.com/votre-compte/complexe-medical.git
-git push -u origin main
-```
-Ensuite connecter le repo GitHub à Netlify pour un déploiement automatique.
 
----
 
-## 🛠️ Technologies utilisées
-
-- **HTML5** — Structure des pages
-- **CSS3** — Styles, animations, responsive design
-- **JavaScript** — Menu hamburger, modal, dark mode, traduction
-- **Font Awesome** — Icônes
-- **Netlify** — Hébergement
+##  Technologies utilisées
+ **HTML5** — Structure des pages
+ **CSS3** — Styles, animations, responsive design
+ **JavaScript** — Menu hamburger, modal, dark mode, traduction
+ **Font Awesome** — Icônes
+ **Netlify** — Hébergement
 
 > Aucun framework ni dépendance npm — site 100% statique.
 
----
 
-## 📞 Contact Clinique
 
-| | |
-|---|---|
-| 📍 Adresse | 5, Mahotière, Carrefour, Haïti |
-| 📞 Téléphone | +509 32 22 10 00 |
-| 📧 Email | complexe@gmail.com |
-| 💬 WhatsApp | [+509 32 22 10 00](https://wa.me/50932221000) |
-
----
-
-## 👨‍💻 Développement
+##  Développement
 
 Site développé en HTML/CSS/JS pur.  
 Pour modifier le site, éditer directement les fichiers `.html` et `.css` correspondants.
 
 ---
 
-## 📄 Licence
+##  Licence
 
-© 2026 Complexe Médical La Perle des Antilles — Tous droits réservés.
+ 2026 Complexe Médical La Perle des Antilles — Tous droits réservés.
