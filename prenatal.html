@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prenatal-Complexe Medical la Perle des Antilles</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fafaf8;
+            color: #1a0a12;
+            overflow-x: hidden;
+        }
+
+        .topbar {
+            background: #9d174d;
+            padding: 0.4rem 2rem;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            font-size: 0.78rem;
+            color: #fce7f3;
+        }
+
+        .main {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 3rem;
+            border-bottom: 1px solid #fce7f3;
+            position: sticky;
+            top: 0;
+            background: rgba(253, 242, 248, 0.97);
+            backdrop-filter: blur(12px);
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+        }
+
+        .logo h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            color: #9d174d;
+            line-height: 1.2;
+        }
+
+        .logo span {
+            display: block;
+            font-size: 0.7rem;
+            color: #ec4899;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+
+        .navLiens {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+
+        }
+
+        .navLiens a {
+            text-decoration: none;
+            color: #1a0a12;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .navLiens a:hover,
+        .navLiens a.active {
+            color: #9d174d;
+        }
+
+        .btnRdv {
+            background: #9d174d;
+            color: white;
+            padding: 0.55rem 1.4rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 14px rgba(157, 23, 77, 0.3);
+        }
+
+        .btnRdv:hover {
+            background: #ec4899;
+            transform: translateY(2px);
+        }
+
+        /*sa se pou menu hamburger*/
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 6px;
+            z-index: 200;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 2.5px;
+            background: #065f46;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .hamburger.open span:nth-child(1) {
+            transform: translateY(7.5px) rotate(45deg);
+        }
+
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.open span:nth-child(3) {
+            transform: translateY(-7.5px) rotate(-45deg);
+        }
+
+        /* les trimestes */
+        .trimsection {
+            padding: 7rem 3rem;
+        }
+
+        .trimsection .eyebrow {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #ec4899;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .trimsection h2 {
+            font-size: 2.8rem;
+            color: #9d174d;
+            font-weight: 300;
+            margin-bottom: 3rem;
+        }
+
+        .trimestres {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .trimestre {
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .trimheader {
+            padding: 2.5rem 2rem 2rem;
+            position: relative;
+        }
+
+        .trim1 .trimheader {
+            background: linear-gradient(135deg, #fce7f3, #fbcfe8);
+        }
+
+        .trim2 .trimheader {
+            background: linear-gradient(135deg, #f5d0e5, #f9a8d4);
+        }
+
+        .trim3 .trimheader {
+            background: linear-gradient(135deg, #ec4899, #9d174d);
+        }
+
+        .trim3 .trimheader * {
+            color: white !important;
+        }
+
+        .trimnumber {
+
+            font-size: 4rem;
+            font-weight: 300;
+            color: #9d174d;
+            opacity: 0.3;
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+        }
+
+        .trimweeks {
+            display: inline block;
+            background: rgba(157, 23, 77, 0.1);
+            color: #9d174d;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .trim3 .trimweeks {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .trimheader h3 {
+
+            font-size: 1.8rem;
+            color: #9d174d;
+            font-weight: 300;
+        }
+
+        .trimbody {
+            background: white;
+            border: 1px solid #fce7f3;
+            border-top: 0;
+            border-radius: 0 0 20px 20px;
+            padding: 2rem;
+        }
+
+        .trimbody ul {
+            list-style: none;
+        }
+
+        .trimbody ul li {
+            display: flex;
+            gap: 0.8rem;
+            align-items: flexstart;
+            margin-bottom: 0.9rem;
+            font-size: 0.9rem;
+            color: #374151;
+        }
+
+        .trimbody ul li::before {
+            content: '';
+            color: #ec4899;
+            font-size: 0.6rem;
+            margin-top: 0.3rem;
+            flex-shrink: 0;
+        }
+
+        /* Sservices offertes*/
+        .servicessection {
+            background: #1a0a12;
+            padding: 7rem 3rem;
+        }
+
+        .servicessection .eyebrow {
+            color: #f9a8d4;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .servicessection h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            color: white;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+        }
+
+        .servicessection .sub {
+            color: #9ca3af;
+            margin-bottom: 3.5rem;
+        }
+
+        .svgrid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .svcard {
+            background: #1a0a12;
+            border: 1px solid #3d1a2a;
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .svcard::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(to right, #9d174d, #ec4899);
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+
+        .svcard:hover {
+            transform: translateY(6px);
+            border-color: #6b2540;
+        }
+
+        .svcard:hover::after {
+            transform: scaleX(1);
+        }
+
+        .svcard .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .svcard h3 {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .svcard p {
+            color: #6b7280;
+            font-size: 0.88rem;
+            line-height: 1.7;
+        }
+
+
+
+        /* notre partie cta */
+        .ctasec {
+            background: linear-gradient(135deg, #9d174d 0%, #db2777 100%);
+            padding: 7rem 3rem;
+            text-align: center;
+        }
+
+        .ctasec h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: white;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+
+        .ctasec p {
+            color: #fce7f3;
+            font-size: 1.05rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .ctaBtn {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+
+        /* le pied de page */
+        footer {
+            background: #2a0a1a;
+            color: white;
+            padding: 4rem 3rem 1.5rem;
+        }
+
+        .footerGrid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footercol h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            color: #f9a8d4;
+        }
+
+        .footercol p {
+            color: #9ca3af;
+            font-size: 0.88rem;
+            line-height: 1.7;
+        }
+
+        .footercol ul {
+            list-style: none;
+        }
+
+        .footercol ul li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footercol ul li a {
+            color: #9ca3af;
+            text-decoration: none;
+            font-size: 0.88rem;
+            transition: color 0.2s;
+        }
+
+        .footercol ul li a:hover {
+            color: #f9a8d4;
+        }
+
+        .footerB {
+            padding-top: 1.5rem;
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.82rem;
+        }
+
+        @media(maxwidth:1024px) {
+            .herolayout {
+                grid-template-columns: 1fr;
+                padding: 4rem 2rem;
+            }
+
+            .herovisual {
+                display: none;
+            }
+
+            .trimestres {
+                grid-template-columns: 1fr;
+            }
+
+            .svgrid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .temoignages {
+                grid-template-columns: 1fr;
+            }
+
+            .footerGrid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media(maxwidth:600px) {
+            nav.main {
+                padding: 1rem;
+            }
+
+            .navlinks {
+                display: none;
+            }
+
+            .svgrid {
+                grid-template-columns: 1fr;
+            }
+
+            .footerGrid {
+                grid-template-columns: 1fr;
+            }
+
+            .servicessection,
+            .trimsection,
+            .temoignagesection,
+            .ctasec {
+                padding: 4rem 1.5rem;
+            }
+        }
+
+        /*tablette */
+        @media (max-width: 1024px) {
+            .serG {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .agesTime {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .introS {
+                grid-template-columns: 1fr;
+            }
+
+            .introV {
+                padding: 3rem;
+                min-height: 300px;
+            }
+
+            .introText {
+                padding: 3rem;
+            }
+
+            .navLiens li a {
+                font-size: 0.8rem;
+                padding: 0.35rem 0.6rem;
+            }
+        }
+
+        /*mobile*/
+        @media (max-width: 768px) {
+
+            /* topbar */
+            .topbar {
+                flex-direction: column;
+                text-align: center;
+                font-size: 0.76rem;
+                padding: 0.5rem 1rem;
+                gap: 2px;
+            }
+
+            /* navbar */
+            .main {
+                padding: 0.8rem 1rem;
+                position: relative;
+            }
+
+            /* hamburger visible */
+            .hamburger {
+                display: flex;
+            }
+
+            /* menu cache s'ouvre avec .open */
+            .navLiens {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                background: white;
+                padding: 0.5rem 0;
+                border-top: 1px solid #d1e8dc;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+                order: 10;
+                gap: 2px;
+            }
+
+            .navLiens.open {
+                display: flex;
+            }
+
+            .navLiens li {
+                width: 100%;
+            }
+
+            .navLiens li a {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.95rem;
+                border-radius: 0;
+                border-left: 3px solid transparent;
+            }
+
+            .navLiens li a:hover,
+            .navLiens li a.active {
+                background: #f0fdf4;
+                color: #065f46;
+                border-left-color: #22c55e;
+            }
+
+            .btnRdv {
+                display: none;
+            }
+
+            /* banniere */
+            .banniere {
+                height: 85vh;
+            }
+
+            .banniereBg {
+                padding: 1.5rem;
+                max-width: 100%;
+            }
+
+            .banniereBg h1 {
+                font-size: 2rem;
+            }
+
+            .banniereBg p {
+                font-size: 0.9rem;
+            }
+
+            .banniereC {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .btnG,
+            .btnOG {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+                padding: 0.8rem 1.5rem;
+            }
+
+            /* intro */
+            .introS {
+                grid-template-columns: 1fr;
+            }
+
+            .introV {
+                padding: 2.5rem 1.5rem;
+                min-height: 240px;
+            }
+
+            .bigI {
+                width: 120px;
+                height: 120px;
+                font-size: 3.5rem;
+            }
+
+            .introVC {
+                font-size: 1.1rem;
+            }
+
+            .introText {
+                padding: 2rem 1.5rem;
+            }
+
+            .introText h2 {
+                font-size: 1.7rem;
+            }
+
+            /* services */
+            .serS {
+                padding: 3rem 1.2rem;
+            }
+
+            .serS h2 {
+                font-size: 1.8rem;
+            }
+
+            .serG {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .serCard {
+                padding: 1.5rem;
+            }
+
+            /* âges */
+            .agesSec {
+                padding: 3rem 1.2rem;
+            }
+
+            .agesSec h2 {
+                font-size: 1.8rem;
+            }
+
+            .agesTime {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .agesCard {
+                padding: 1.5rem 1rem;
+            }
+
+            .agesNombre {
+                font-size: 3rem;
+            }
+
+            /* CTA */
+            .ctasec {
+                padding: 3.5rem 1.2rem;
+            }
+
+            .ctasec h2 {
+                font-size: 1.8rem;
+            }
+
+            .ctaBtn {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .ctaBtn .btnG,
+            .ctaBtn .btnOG {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+            }
+
+            /* footer */
+            footer {
+                padding: 2.5rem 1.2rem 0;
+            }
+
+            .footerGrid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .banniereBg h1 {
+                font-size: 1.6rem;
+            }
+
+            .introText h2 {
+                font-size: 1.4rem;
+            }
+
+            .serS h2,
+            .agesSec h2,
+            .ctasec h2 {
+                font-size: 1.4rem;
+            }
+
+            .agesTime {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!--le page prenatal-->
+    <nav class="topbar">
+        <span>5, Mahotiere, Carrefour</span>
+        <span>+509 32 22 10 00</span>
+        <span>complexe@gmail.com</span>
+    </nav>
+
+    <nav class="main">
+        <a class="logo" href="index.html">
+            <div>
+                <h1>Complexe Medical<br>La Perle des Antilles</h1>
+                <span>Votre sante, notre priorite</span>
+            </div>
+        </a>
+
+
+         <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="navLiens" id="navLiens">
+            <li><a href="index.html">Acceuil</a></li>
+            <li><a href="pediatre.html" class="active">Pediatrie</a></li>
+            <li><a href="prenatal.html">Prenatal</a></li>
+            <li><a href="consultationGeneral.html">Consultation</a></li>
+            <li><a href="dentiste.html">Dentiste</a></li>
+            <li><a href="faq.html">F.A.Q</a></li>
+        </ul>
+        <a href="prendreRendez.html" class="btnRdv">Prendre rendezvous</a>
+    </nav>
+
+
+    <!--trimestes-->
+    <section class="trimsection" id="trimestres">
+        <div class="eyebrow">Votre parcours</div>
+        <h2>Suivi trimestre par trimestre</h2>
+        <div class="trimestres">
+            <div class="trimestre trim1">
+                <div class="trimheader">
+                    <div class="trimnumber">I</div>
+                    <div class="trimweeks">Semaines 1-12</div>
+                    <h3>Premier Trimestre</h3>
+                </div>
+                <div class="trimbody">
+                    <ul>
+                        <li>Confirmation de grossesse et bilan sanguin complet</li>
+                        <li>Première échographie de datation</li>
+                        <li>Dépistage prénatal (trisomie 21)</li>
+                        <li>Conseils nutritionnels et supplémentation en acide folique</li>
+                        <li>Gestion des nausées et inconforts</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="trimestre trim2">
+                <div class="trimheader">
+                    <div class="trimnumber">II</div>
+                    <div class="trimweeks">Semaines 13-26</div>
+                    <h3>Deuxième Trimestre</h3>
+                </div>
+                <div class="trimbody">
+                    <ul>
+                        <li>Échographie morphologique du 2e trimestre</li>
+                        <li>Bilan sanguin et glycémie</li>
+                        <li>Mesure de la tension artérielle</li>
+                        <li>Surveillance de la croissance fœtale</li>
+                        <li>Préparation psychologique à la maternité</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="trimestre trim3">
+                <div class="trimheader">
+                    <div class="trimnumber">III</div>
+                    <div class="trimweeks">Semaines 27-40</div>
+                    <h3>Troisième Trimestre</h3>
+                </div>
+                <div class="trimbody">
+                    <ul>
+                        <li>Monitoring du rythme cardiaque fœtal</li>
+                        <li>Préparation à l'accouchement</li>
+                        <li>Consultation anesthésique si nécessaire</li>
+                        <li>Suivi du positionnement du bébé</li>
+                        <li>Plan de naissance personnalisé</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--services-->
+    <section class="servicessection">
+        <div class="eyebrow">Nos prestations</div>
+        <h2>Services prénataux complets</h2>
+        <p class="sub">Tout ce dont vous avez besoin pour une grossesse sereine et bien accompagnée.</p>
+        <div class="svgrid">
+            <div class="svcard">
+                <div class="icon"></div>
+                <h3>Analyses biologiques</h3>
+                <p>Bilans sanguins complets, glycémie, groupage sanguin et tous les examens recommandés durant la
+                    grossesse.</p>
+            </div>
+            <div class="svcard">
+                <div class="icon"></div>
+                <h3>Échographies</h3>
+                <p>Suivi échographique régulier pour observer le développement de votre bébé à chaque étape.</p>
+            </div>
+            <div class="svcard">
+                <div class="icon"></div>
+                <h3>Supplémentation</h3>
+                <p>Prescription et suivi des vitamines, fer, acide folique et autres suppléments essentiels.</p>
+            </div>
+            <div class="svcard">
+                <div class="icon"></div>
+                <h3>Préparation à l'accouchement</h3>
+                <p>Séances de préparation, exercices de respiration et accompagnement psychologique.</p>
+            </div>
+            <div class="svcard">
+                <div class="icon"></div>
+                <h3>Soutien à l'allaitement</h3>
+                <p>Conseils et accompagnement pour l'allaitement maternel avant et après la naissance.</p>
+            </div>
+            <div class="svcard">
+                <div class="icon"></div>
+                <h3>Suivi postnatal</h3>
+                <p>Consultation de suivi après l'accouchement pour la maman et le nouveauné.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="ctasec">
+        <div class="secEye">Prenez soin de votre enfant</div>
+        <h2>Commencez votre <br>suivi pr&eacute;natal</h2>
+        <p>Nous vous accompagnerons durant le processus</p>
+        <div class="ctaBtn">
+            <a href="prendreRendez.html" class="btnRdv">Prendre un rendezvous</a>
+            <a href="contact" class="btnRdv">Nous contacter</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footerGrid">
+            <div class="footercol">
+                <h4>Complexe Medical La Perle des Antilles</h4>
+                <p>Des soins premium pour toute la famille, dans un contexte</p>
+            </div>
+
+            <div class="footercol">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="pediatre.html">P&eacute;diatrie</a></li>
+                    <li><a href="prenatal.html">Suivi Pr&eacute;natal</a></li>
+                    <li><a href="dentiste.html">Dentisterie</a></li>
+                    <li><a href="consultationGeneral.html">Medicine General</a></li>
+                </ul>
+            </div>
+
+            <div class="footercol">
+                <h4>Liens utiles</h4>
+                <ul>
+                    <li><a href="prendreRendez.html">Prendre rendez vous</a></li>
+                    <li><a href="index.html">A propos</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+
+            <div class="footercol">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="#">5, Mahotiere, Carrefour</a></li>
+                    <li><a href="">+509 32 22 10 00</a></li>
+                    <li><a href="">complexe@gmail.com</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footerB">copy right 2026 Complexe M&eacute;dical La Perle des Antilles</div>
+    </footer>
+
+     <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLiens = document.getElementById('navLiens');
+
+        hamburger.addEventListener('click', function () {
+            const isOpen = navLiens.classList.toggle('open');
+            hamburger.classList.toggle('open', isOpen);
+            hamburger.setAttribute('aria-expanded', isOpen);
+        });
+
+        navLiens.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                navLiens.classList.remove('open');
+                hamburger.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!hamburger.contains(e.target) && !navLiens.contains(e.target)) {
+                navLiens.classList.remove('open');
+                hamburger.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', 'false');
+            }
+        });
+    </script>
+
+</body>
+
+</html>

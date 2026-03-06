@@ -1,0 +1,1157 @@
+/*on utilise le root pour la declaration des couleurs qui  vont etre utilises*/
+:root {
+    --bg: #f8faf9;
+    --surface: #ffffff;
+    --surface2: #f0f7f4;
+    --text-secondary: #3d6b54;
+    --text-muted: #6b9e82;
+    --accent: #065f46;
+    --accent2: #22c55e;
+    --accent3: #14b8a6;
+    --border: #d1e8dc;
+    --shadow: rgba(6, 95, 70, 0.12);
+    --shadow-strong: rgba(6, 95, 70, 0.25);
+    --nav-bg: #065f46;
+    --nav-text: #ffffff;
+    --card-bg: #065f46;
+    --modal-overlay: rgba(0, 0, 0, 0.6);
+    --footer-bg: #022c20;
+    --footer-surface: #033d2c;
+}
+
+/*la transition lorsque le theme sombre s'installera*/
+[data-theme="dark"] {
+    --bg: #0a1a12;
+    --surface: #0f2d1e;
+    --surface2: #132e1e;
+    --text-primary: #e8f5ef;
+    --text-secondary: #a7d4bc;
+    --text-muted: #6b9e82;
+    --accent: #22c55e;
+    --accent2: #4ade80;
+    --accent3: #2dd4bf;
+    --border: #1a4a30;
+    --shadow: rgba(0, 0, 0, 0.4);
+    --shadow-strong: rgba(0, 0, 0, 0.6);
+    --nav-bg: #0a1a12;
+    --card-bg: #0f3a28;
+    --modal-overlay: rgba(0, 0, 0, 0.8);
+    --footer-bg: #060f09;
+    --footer-bottom-bg: #0a1a12;
+}
+
+/*selecteur universel permettant se reset notre page avec margin et padding a 0*/
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ceci est applique pour evite tout debordement*/
+body {
+    overflow-x: hidden;
+    background: var(--bg);
+    color: var(--text-primary);
+}
+
+/* pour que les checkbox n'apparaissent pas*/
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    text-decoration: none;
+    z-index: 9999;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.45);
+    transition: transform 0.3s, box-shadow 0.3s;
+
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 28px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-float i {
+
+    color: black;
+}
+
+/*le premier navbar*/
+
+.loca {
+    background: var(--accent);
+    padding: 0.45rem 2rem;
+}
+
+.loca ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 10;
+    padding: 0.5%;
+    color: white;
+}
+
+
+.loca ul li {
+    list-style: none;
+}
+
+/*le second navbar*/
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8em 2.5rem;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background 0.4s, border-color 0.4s;
+    box-shadow: 0 2px 16px;
+
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+    padding-left: 1.5em;
+    width: 60%;
+}
+
+.logo img {
+    width: 15%;
+    height: auto;
+    border-radius: 6px;
+}
+
+.logo span {
+    display: block;
+    align-self: center;
+    color: #3aaf63;
+    font-size: 0.9rem;
+}
+
+.logo h1 {
+    font-size: 1.3rem;
+    color: rgba(14, 63, 18, 0.85);
+}
+
+.logo span {
+    display: block;
+    opacity: 0;
+    transform: translateX(10px);
+    animation: showText 1s ease forwards;
+    animation-delay: 0.8s;
+}
+
+@keyframes showText {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.logo:hover {
+    transform: translateX(370px);
+    transition: 4s;
+}
+
+.imp {
+    width: 40%;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+
+}
+
+/*pour le dark mode*/
+.theme-toggle {
+    position: relative;
+    width: 52px;
+    height: 28px;
+    cursor: pointer;
+}
+
+.theme-toggle input {
+    display: none;
+}
+
+.toggle-track {
+    width: 52px;
+    height: 28px;
+    border-radius: 14px;
+    position: relative;
+    transition: background 0.3s;
+}
+
+.theme-toggle input:checked+.toggle-track {
+    background: #065f46;
+}
+
+.toggle-thumb {
+    position: relative;
+    top: 3px;
+    left: 3px;
+    width: 22px;
+    height: 22px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.theme-toggle input:checked+.toggle-track .toggle-thumb {
+    transform: translateX(24px);
+
+}
+
+.toggle-icon {
+    pointer-events: none;
+}
+
+/*pour le tooltip*/
+.tooltip {
+    display: inline-block;
+    cursor: pointer;
+    transition: background0.3s;
+    position: relative;
+}
+
+.tooltip-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    background: transparent;
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background: rgba(14, 63, 18, 0.85);
+    text-align: center;
+    padding: 2%;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 999;
+    color: white;
+
+}
+
+.tooltip .tooltiptext::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent rgba(14, 63, 18, 0.85) transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.icon-btn {
+    color: rgba(14, 63, 18, 0.85);
+    font-size: 100%;
+}
+
+.icon-btn:hover {
+    transform: scale(1.3);
+    transition: 2s;
+}
+
+/* Language dropdown */
+.drop {
+    position: relative;
+}
+
+.drop>button {
+    background: transparent;
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    padding: 0.3rem 0.7rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-family: 'DM Sans', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: all 0.2s;
+}
+
+.drop>button:hover {
+    background: var(--accent);
+    color: white;
+}
+
+.dropC {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px var(--shadow);
+    z-index: 999;
+}
+
+.drop:hover .dropC {
+    display: flex;
+    flex-direction: column;
+}
+
+.lang-btn {
+    background: transparent;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    transition: background 0.2s;
+    text-align: left;
+}
+
+.lang-btn:hover,
+.lang-btn.active {
+    background: var(--accent);
+    color: white;
+}
+
+
+
+/* le navbar ayant les pages*/
+.message ul {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
+    padding: 0.5em;
+    background-color: var(--accent);
+    color: var(--surface2);
+}
+
+.message ul li {
+    list-style: none;
+    position: relative;
+}
+
+.message ul li a {
+    text-decoration: none;
+    padding: 0.5em 0.8em;
+    position: relative;
+    color: inherit;
+}
+
+.message ul li a:hover {
+    color: var(--accent3);
+}
+
+.message ul li a.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.3em;
+    width: 100%;
+    height: 0.3em;
+    border: var(--accent2);
+    border-radius: 0.2em;
+}
+
+.er {
+    display: none;
+}
+
+#serv {
+    opacity: 0;
+    position: absolute;
+}
+
+ul li ul.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    min-width: 15em;
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: 100;
+    background-color: white;
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.15);
+    line-height: 1.6;
+    color: #065f46;
+}
+
+ul li:hover ul.dropdown {
+    display: flex;
+}
+
+ul li ul.dropdown li a:hover {
+    background: #065f46;
+    color: white;
+}
+
+
+
+ul li input[type="checkbox"] {
+    display: none;
+}
+
+ul li label {
+    width: 100%;
+    padding: 0.5rem 0.8rem;
+    cursor: pointer;
+
+}
+
+.baniere {
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    animation: bgSlide 35s infinite;
+}
+
+.baniere::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.baniere2 {
+    position: relative;
+    color: white;
+    background: transparent;
+    text-align: center;
+    padding: 1rem;
+    width: 100%;
+}
+
+.baniere2 {
+    background: transparent;
+    position: absolute;
+    top: 35%;
+    justify-content: center;
+
+}
+
+.baniere2 h1 {
+    font-size: 4rem;
+    color: white;
+}
+
+.baniere2 p {
+    font-size: 2rem;
+}
+
+@keyframes bgSlide {
+    0% {
+        background-image: url("../images/bebecouche.jfif");
+    }
+
+    14.28% {
+        background-image: url("../images/consul4b.jpg");
+    }
+
+    28.56% {
+        background-image: url("../images/p3.avif");
+    }
+
+    42.84% {
+        background-image: url("../images/imp.jpg");
+    }
+
+    57.12% {
+        background-image: url("../images/impo.jpg");
+    }
+
+    71.40% {
+        background-image: url("../images/imp3.jpg");
+    }
+
+    85.68% {
+        background-image: url("../images/prenatal.jpeg");
+    }
+
+    100% {
+        background-image: url("../images/imp4.jpg");
+    }
+
+}
+
+/*ici on met les services a dispositions*/
+
+.service {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    padding: 20px;
+    flex-wrap: wrap;
+    background: var(--bg);
+}
+
+
+.carte {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carte img {
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    z-index: 1;
+    box-shadow: 1px 1px 4px black;
+    border-radius: 3px;
+    transition: transform.5s;
+}
+
+.carte:hover img {
+    transform: translateY(90px);
+}
+
+.back {
+    position: relative;
+    height: auto;
+    max-width: 310px;
+    width: 90%px;
+    padding: 29px 36px;
+    background-color: #065f46;
+    border-radius: 5px;
+    box-shadow: 2px 2px 9px black;
+    box-sizing: border-box;
+    text-align: center;
+    transition: all .5s;
+    color: white;
+}
+
+
+.carte:hover .back {
+    height: 350px;
+}
+
+.h2 {
+    display: none;
+}
+
+.tele {
+    display: none;
+}
+
+/*Tous ces qu'ont pourra dire du clinique*/
+main{
+    background: var(--bg);
+}
+.propos {
+    display: flex;
+    margin: 6%;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 3%;
+    box-shadow: 2px 2px 9px rgb(156, 243, 156);
+    
+}
+
+.p2 {
+    padding: 1%;
+    padding-right: 5%;
+
+}
+
+.p2a {
+    margin-right: 5%;
+
+}
+
+.p2a h2 {
+    color: var(--accent);
+}
+
+.p2a p {
+    color: var(--accent2);
+}
+
+.p3 {
+    padding: 2%;
+}
+
+.p3a {
+    width: 80%;
+
+}
+
+.p3a img {
+    width: 100%;
+}
+
+/* ici on trouve le contact et la prise de rendez-vous*/
+.contact {
+    margin: 9%;
+    display: flex;
+    justify-content: center;
+}
+
+.secteur1 {
+    background-image: url("../images/contact2.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 30vw;
+    height: 55vh;
+
+}
+
+.ekriti {
+    text-align: center;
+    padding: 5%;
+    line-height: 1.7;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(0.1rem);
+}
+
+.ekriti h2 {
+    color: #065f46;
+}
+
+.ekriti a {
+    text-decoration: none;
+    color: rgb(5, 32, 5);
+}
+
+.ekriti p {
+    color: var(--accent);
+}
+
+.secteur2 {
+    position: relative;
+    box-shadow: 2px 2px 9px black;
+    width: 100%;
+    height: 55vh;
+
+}
+
+.donne {
+    text-align: center;
+    align-items: center;
+    line-height: 1.3;
+    padding: 0.6em;
+
+}
+
+.donne h2 {
+    color: var(--accent2);
+}
+
+.donne p {
+    color: var(--accent);
+}
+
+.bouton {
+    padding: 14px 28px;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    color:var(--accent);
+    background-color: linear-gradient(to right, #22c55e, #14b8a6);
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(20, 184, 166, 0.35);
+    transition: all 0.3s easea;
+    margin: 1.5rem;
+}
+
+.bouton a {
+    text-decoration: none;
+    color: var(--accent);
+}
+
+.bouton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(20, 184, 166, 0.45);
+}
+
+.bouton:active {
+    transform: scale(0.96);
+}
+
+
+/* modal */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--modal-overlay);
+    z-index: 9000;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.25s ease;
+}
+
+.modal-overlay.open {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.modal {
+    background: var(--surface);
+    border-radius: 20px;
+    padding: 2.5rem;
+    width: 90%;
+    max-width: 540px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 24px 60px var(--modal-overlay);
+    animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid var(--border);
+    transition: background 0.4s;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.2rem;
+    background: transparent;
+    border: none;
+    font-size: 1.4rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s, transform 0.2s;
+}
+
+.modal-close:hover {
+    color: var(--text-primary);
+    transform: rotate(90deg);
+}
+
+.modal h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+}
+
+.modal p.modal-sub {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    margin-bottom: 1.8rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 0.75rem 1rem;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface2);
+    color: var(--text-primary);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.92rem;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.4s;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--accent2);
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.15);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.modal-submit {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #22c55e, #14b8a6);
+    color: var(--bg);
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(34, 197, 94, 0.35);
+    transition: all 0.3s;
+    margin-top: 0.5rem;
+}
+
+.modal-submit:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.modal-success {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem 0;
+    gap: 1rem;
+}
+
+.modal-success .success-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #22c55e, #14b8a6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+    animation: scaleIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+.modal-success h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--accent);
+}
+
+.modal-success p {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+}
+
+/*pied de page*/
+
+.footer1 {
+
+    color: white;
+    padding: 3rem;
+    line-height: 1.2;
+}
+
+
+
+.footer a {
+    text-decoration: none;
+    color:var(--text-secondary);
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-col h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.footer-col h4 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col li {
+    margin-bottom: 2%;
+    line-height: 0.9;
+}
+
+.footer-bottom {
+   
+    color: white;
+    padding-top: 1.2%;
+    text-align: center;
+    font-size: 0.95rem;
+    letter-spacing: 1.2;
+
+}
+
+@media (max-width: 768px) {
+    nav.loca ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    /* l'en tet principale */
+    nav.navbar {
+        flex-wrap: wrap;
+        padding: 8px 12px;
+        gap: 8px;
+    }
+
+    nav.navbar .logo h1 {
+        font-size: 13px;
+    }
+
+    nav.navbar .logo img {
+        width: 36px;
+        height: 36px;
+    }
+
+    nav.navbar .actions {
+        gap: 8px;
+    }
+
+    /*le lien en tete  */
+    nav.message ul.messagel {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px;
+        padding: 8px 10px;
+    }
+
+    nav.message ul.messagel li a {
+        font-size: 13px;
+        padding: 4px 8px;
+    }
+
+    /* banniere */
+    section.baniere,
+    .baniere2 {
+        min-height: 220px;
+        padding: 20px 16px;
+        text-align: center;
+    }
+
+    .baniere2 h1 {
+        font-size: 18px;
+    }
+
+    .banniere-texte p {
+        font-size: 13px;
+    }
+
+    .banniere-bouton,
+    .baniere2 .banniere-bouton {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        margin-top: 12px;
+    }
+
+    .bouton {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+    }
+
+    /* --- Cartes services desktop (cachees sur mobile) --- */
+    section.service {
+        display: none;
+    }
+
+    /* --- Cartes telephone (visibles sur mobile) --- */
+    section.tele {
+        display: flex !important;
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px;
+    }
+
+    .h2 {
+        display: block !important;
+        text-align: center;
+        font-size: 20px;
+        margin: 16px 0 0;
+    }
+
+    .card {
+        width: 100%;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .card img {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+    }
+
+    /* --- notre partie a propos --- */
+    section.propos {
+        flex-direction: column !important;
+        padding: 16px;
+    }
+
+    section.propos .p2,
+    section.propos .p3 {
+        width: 100% !important;
+    }
+
+    section.propos .p3a img {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    /* --- Contact --- */
+    section.contact {
+        flex-direction: column !important;
+        padding: 16px;
+        gap: 20px;
+    }
+
+    .secteur1,
+    .secteur2 {
+        width: 100% !important;
+    }
+
+    /* --- Footer --- */
+    .footer-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+        padding: 16px;
+    }
+
+    /* --- Modal --- */
+    .modal {
+        width: 95vw !important;
+        max-height: 90vh;
+        overflow-y: auto;
+        padding: 20px 16px !important;
+        margin: 20px auto;
+    }
+
+    .form-row {
+        flex-direction: column !important;
+        gap: 0;
+    }
+
+    .modal h2 {
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 769px) {
+
+    /* pour cacher section tele et h2 "Nos services" sur desktop */
+    section.tele {
+        display: none;
+    }
+
+    .h2 {
+        display: none;
+    }
+}

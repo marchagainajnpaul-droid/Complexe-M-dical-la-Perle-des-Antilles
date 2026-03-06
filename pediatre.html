@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pediatre-Complexe Medical La Perle des Antilles</title>
+    <link rel="stylesheet" href="css/style2.css">
+
+    <style>
+        /*le menu hamburger*/
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 6px;
+            z-index: 200;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 2.5px;
+            background: #065f46;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .hamburger.open span:nth-child(1) {
+            transform: translateY(7.5px) rotate(45deg);
+        }
+
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.open span:nth-child(3) {
+            transform: translateY(-7.5px) rotate(-45deg);
+        }
+
+        /*La banniere*/
+        .banniere {
+            background-image: url("images/bebe2.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100vh;
+        }
+
+        .banniereBg {
+            position: absolute;
+            align-items: center;
+            text-align: center;
+            top: 45%;
+            left: 15%;
+        }
+
+        /*introduction*/
+        .introS {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            min-height: 70vh;
+        }
+
+        .introV {
+            background: linear-gradient(160deg, #065f46 0%, #a7f3d0 100%);
+            display: flex;
+            justify-content: center;
+            padding: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .introV::before {
+            content: '';
+            position: absolute;
+            font-size: 20rem;
+            color: rgba(6, 95, 70, 0.5);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .introIW {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .bigI {
+            width: 180px;
+            height: 180px;
+            background: #065f46;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            box-shadow: 0 20px 60px rgba(6, 95, 70, 0.3);
+            font-size: 4rem;
+        }
+
+        .introVC {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 1.5rem;
+            color: #065f46;
+            font-style: italic;
+            text-align: center;
+        }
+
+        .introText {
+            padding: 5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .sectionE {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #6ee7b7;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .introText h2 {
+            font-size: 2.8rem;
+            font-weight: 300;
+            color: #065f46;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .introText p {
+            color: #374151;
+            line-height: 1.8;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .hB {
+            background: #6ee7b7;
+            border-left: 3px solid #a7f3d0;
+            padding: 1.2rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin-top: 1.5rem;
+            font-size: 1.rem;
+            font-style: italic;
+        }
+
+        /*Pour le section services*/
+        .serS {
+            padding: 7rem 3rem;
+            background: #0a1a0f;
+        }
+
+        .serS .serE {
+            color: #065f46;
+        }
+
+        .serS h2 {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 2.8rem;
+            color: white;
+            font-weight: 300;
+            margin-bottom: 0.rem;
+        }
+
+        .serS .sub {
+            color: #9ca3af;
+            margin-bottom: 4rem;
+            max-width: 500px;
+        }
+
+        .serG {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .serCard {
+            background: #0a1a0f;
+            border: 1px solid #1f3025;
+            border-radius: 6px;
+            padding: 2.5rem 2rem;
+            transition: all 0.45;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .serCard::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(to right, #065f46, #065f46);
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+
+        .serCard:hover {
+            transform: translateY(-6px);
+        }
+
+        .serCard:hover::before {
+            transform: scaleX();
+        }
+
+        .cardIcon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .serCard h3 {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .serCard p {
+            color: #6b7280;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+
+        /*le section age*/
+        .agesSec {
+            padding: 7rem 3rem;
+        }
+
+        .agesSec h2 {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 2.8rem;
+            color: #065f46;
+            font-weight: 300;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .agesTime {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .agesCard {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5em 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 30px rgba(6, 95, 70, 0.8);
+            border: 1px solid #e5f5ee;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .agesCard:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 48px rgba(6, 95, 70, 0.15);
+
+        }
+
+        .agesNumber {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 4rem;
+            font-weight: 300;
+            color: #d1fae5;
+            line-height: 1;
+            margin-bottom: 0.5em;
+        }
+
+        .agesLabel {
+            font-weight: 700;
+            color: #065f46;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .agesCard p {
+            color: #6b7280;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .agesEm {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /*cta*/
+        .ctasec {
+            padding: 7rem 3rem;
+            text-align: center;
+            background: #d1fae5;
+
+        }
+
+        .ctasec h2 {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 3rem;
+            color: #065f46;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+
+        .ctasec p {
+            color: #374151;
+            margin-bottom: 2.5rem;
+            font-size: 1.05rem;
+        }
+
+        .ctasec btn {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btnG {
+            background: #065f46;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            box-shadow: 0 8px 24px rgba(6, 95, 70, 0.3);
+        }
+
+        .btnG:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 36px rgba(6, 95, 70, 0.4);
+        }
+
+        .btnOG {
+            background: transparent;
+            color: #065f46;
+            border: 2px solid #065f46;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+
+        .btnOG:hover {
+            background: #065f46;
+            color: white;
+        }
+
+        /*responsite pou tab et laptop*/
+        @media (max-width: 1024px) {
+            .serG {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .agesTime {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .introS {
+                grid-template-columns: 1fr;
+            }
+
+            .introV {
+                padding: 3rem;
+                min-height: 300px;
+            }
+
+            .introText {
+                padding: 3rem;
+            }
+
+            .navLiens li a {
+                font-size: 0.8rem;
+                padding: 0.35rem 0.6rem;
+            }
+        }
+
+        /* le telephone */
+        @media (max-width: 768px) {
+
+            /* topbar */
+            .topbar {
+                flex-direction: column;
+                text-align: center;
+                font-size: 0.76rem;
+                padding: 0.5rem 1rem;
+                gap: 2px;
+            }
+
+            /* navbar */
+            .main {
+                padding: 0.8rem 1rem;
+                position: relative;
+            }
+
+            /* hamburger visible */
+            .hamburger {
+                display: flex;
+            }
+
+            /* menu cache, s'ouvre avec open */
+            .navLiens {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                background: white;
+                padding: 0.5rem 0;
+                border-top: 1px solid #d1e8dc;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+                order: 10;
+                gap: 2px;
+            }
+
+            .navLiens.open {
+                display: flex;
+            }
+
+            .navLiens li {
+                width: 100%;
+            }
+
+            .navLiens li a {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.95rem;
+                border-radius: 0;
+                border-left: 3px solid transparent;
+            }
+
+            .navLiens li a:hover,
+            .navLiens li a.active {
+                background: #f0fdf4;
+                color: #065f46;
+                border-left-color: #22c55e;
+            }
+
+            .btnRdv {
+                display: none;
+            }
+
+            /* bannière */
+            .banniere {
+                height: 85vh;
+            }
+
+            .banniereBg {
+                padding: 1.5rem;
+                max-width: 100%;
+            }
+
+            .banniereBg h1 {
+                font-size: 2rem;
+            }
+
+            .banniereBg p {
+                font-size: 0.9rem;
+            }
+
+            .banniereC {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .btnG,
+            .btnOG {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+                padding: 0.8rem 1.5rem;
+            }
+
+            /* introduction */
+            .introS {
+                grid-template-columns: 1fr;
+            }
+
+            .introV {
+                padding: 2.5rem 1.5rem;
+                min-height: 240px;
+            }
+
+            .bigI {
+                width: 120px;
+                height: 120px;
+                font-size: 3.5rem;
+            }
+
+            .introVC {
+                font-size: 1.1rem;
+            }
+
+            .introText {
+                padding: 2rem 1.5rem;
+            }
+
+            .introText h2 {
+                font-size: 1.7rem;
+            }
+
+            /* services */
+            .serS {
+                padding: 3rem 1.2rem;
+            }
+
+            .serS h2 {
+                font-size: 1.8rem;
+            }
+
+            .serG {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .serCard {
+                padding: 1.5rem;
+            }
+
+            /* âges */
+            .agesSec {
+                padding: 3rem 1.2rem;
+            }
+
+            .agesSec h2 {
+                font-size: 1.8rem;
+            }
+
+            .agesTime {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .agesCard {
+                padding: 1.5rem 1rem;
+            }
+
+            .agesNombre {
+                font-size: 3rem;
+            }
+
+            /* cta */
+            .ctasec {
+                padding: 3.5rem 1.2rem;
+            }
+
+            .ctasec h2 {
+                font-size: 1.8rem;
+            }
+
+            .ctaBtn {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .ctaBtn .btnG,
+            .ctaBtn .btnOG {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+            }
+
+            /*pied de page */
+            footer {
+                padding: 2.5rem 1.2rem 0;
+            }
+
+            .footerGrid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .banniereBg h1 {
+                font-size: 1.6rem;
+            }
+
+            .introText h2 {
+                font-size: 1.4rem;
+            }
+
+            .serS h2,
+            .agesSec h2,
+            .ctasec h2 {
+                font-size: 1.4rem;
+            }
+
+            .agesTime {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <!--le page pediatre-->
+    <nav class="topbar">
+        <span>5, Mahotiere, Carrefour</span>
+        <span>+509 32 22 10 00</span>
+        <span>complexe@gmail.com</span>
+    </nav>
+
+    <nav class="main">
+        <a class="logo" href="index.html">
+            <div>
+                <h1>Complexe Medical<br>La Perle des Antilles</h1>
+                <span>Votre sante, notre priorite</span>
+            </div>
+        </a>
+
+        <!--menu hamburger-->
+        <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="navLiens" id="navLiens">
+            <li><a href="index.html">Acceuil</a></li>
+            <li><a href="pediatre.html" class="active">Pediatrie</a></li>
+            <li><a href="prenatal.html">Prenatal</a></li>
+            <li><a href="consultationGeneral.html">Consultation</a></li>
+            <li><a href="dentiste.html">Dentiste</a></li>
+            <li><a href="faq.html">F.A.Q</a></li>
+        </ul>
+        <a href="prendreRendez.html" class="btnRdv">Prendre rendez-vous</a>
+    </nav>
+
+    <!--banniere-->
+    <section class="banniere">
+        <div class="banniereBg">
+            <div class="banniereCon">
+                <div class="banniereBa" style="font-weight: 500;">Service P&eacute;diatrique</div>
+                <h1>Grandir en<br>bonne <em>sant&eacute;</em></h1>
+                <p style="font-weight: 700; margin: 1.5em;">Soins m&eacute;dicaux sp&eacute;cialis&eacute;s pour les
+                    nourrissons, enfants et adolescents. Notre
+                    equipe veille sur chaque &eacute;tape du d&eacute;veloppement de votre enfant.</p>
+                <div class="banniereC" style="margin-top: 1rem;">
+                    <a href="prendreRendez.html" class="btnG">Prendre rendez-vous</a>
+                    <a href="" class="btnOG">D&eacute;couvrir nos soins</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Intro-->
+    <section class="introS">
+        <div class="introV">
+            <div class="introIW">
+                <div class="bigI">👶</div>
+                <div class="introVC">"Chaque enfant m&eacute;rite <br> les meilleurs soins"</div>
+            </div>
+        </div>
+
+        <div class="introText">
+            <div class="sectionE">Notre approche</div>
+            <h2>La sant&eacute; de votre enfant, notre engaagement</h2>
+            <p>Le d&eacute;partement de P&eacute;diatrie du Complexe M&eacute;dical La Perle des Antilles offre une
+                prise en charge complete et bienveillante de vos enfants,de la naissance jusqu'a l'adolescence.</p>
+            <p>Nos p&eacute;diatres exp&eacute;riment&eacute;s assurent un suivi personnalis&eacute; incluant les
+                consultations pr&eacute;ventives, les vaccinations, et le traitement des maladies courantes et
+                chroniques.</p>
+            <div class="hB">
+                "Un environnement chaleureux et rassurant, concu pour les enfants."
+            </div>
+        </div>
+    </section>
+
+    <!--Services-->
+    <section class="serS" id="ser">
+        <div class="serE">Ce que nous offrons</div>
+        <h2>Nos services p&eacute;diatriques</h2>
+        <p class="sub">Une gamme complete de soins pour accompagner la croissance et la sante de votre enfant.</p>
+        <div class="serG">
+            <div class="serCard">
+                <div class="cardIcon"></div>
+                <h3>Vaccination</h3>
+                <p>Programme complet de vaccination selon le calandrier national et international pour proteger votre
+                    enfant des maladies.</p>
+            </div>
+
+            <div class="serCard">
+                <div class="cardIcon"></div>
+                <h3>Suivi de croissance</h3>
+                <p>Surveillance r&eacute;guliere du poids, de la taille et du d&eacute;veloppement psychomoteur de votre
+                    enfant.</p>
+            </div>
+
+            <div class="serCard">
+                <div class="cardIcon"></div>
+                <h3>Bilan de sant&eacute;</h3>
+                <p>Examens complets pour d&eacute;pister pr&eacute;cocement les</p>
+            </div>
+
+            <div class="serCard">
+                <div class="cardIcon"></div>
+                <h3>Maladies courantes</h3>
+                <p>Traitement des infections respiratoires</p>
+
+            </div>
+
+            <div class="serCard">
+                <div class="cardIcon"></div>
+                <h3>D&eacute;veloppement & comportement</h3>
+                <p>&Eacute;valuation du d&eacute;veloppement neurologiqueet comportementale</p>
+            </div>
+
+            <div class="serCard">
+                <div class="cardIcon"></div>
+                <h3>Nutrition p&eacute;diatrique</h3>
+                <p>Conseils nutritionnels personnalis&eacute;s pour une alimentation</p>
+            </div>
+        </div>
+    </section>
+
+    <!--Ages-->
+    <section class="agesSec">
+        <div class="secE"></div>
+        <h2>De la naissance a l'adolescence</h2>
+
+        <div class="agesTime">
+
+            <div class="agesCard">
+                <div class="agesEmo"></div>
+                <div class="agesNombre">0-2</div>
+                <div class="agesLabel">Nourrisson</div>
+                <p>Vaccinations, allaitement, diversification</p>
+            </div>
+
+            <div class="agesCard">
+                <div class="agesEmo"></div>
+                <div class="agesNombre">3-6</div>
+                <div class="agesLabel">Petite enfance</div>
+                <p>Pr&eacute;paration a la scolarisation, bilans de sant&eacute;,</p>
+            </div>
+
+            <div class="agesCard">
+                <div class="agesEmo"></div>
+                <div class="agesNombre">7-12</div>
+                <div class="agesLabel">Enfance</div>
+                <p>Suivi scolaire, d&eacute;pistage visuel et auditif</p>
+            </div>
+
+            <div class="agesCard">
+                <div class="agesEmo"></div>
+                <div class="agesNombre">13-18</div>
+                <div class="agesLabel">Adolescence</div>
+                <p>Accompagnement pubertaire,sante mentale</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="ctasec">
+        <div class="secEye">Prenez soin de votre enfant</div>
+        <h2>Pret a rencontrer<br>Le pediatre</h2>
+        <p>Consultations disponibles du lundi au samedi.Urgences</p>
+        <div class="ctaBtn">
+            <a href="prendreRendez.html" class="btnG">Prendre un rendez-vous</a>
+            <a href="contact" class="btnOG">Nous contacter</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footerGrid">
+            <div class="footercol">
+                <h4>Complexe Medical La Perle des Antilles</h4>
+                <p>Des soins premium pour toute la famille, dans un contexte</p>
+            </div>
+
+            <div class="footercol">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="pediatre.html">P&eacute;diatrie</a></li>
+                    <li><a href="prenatal.html">Suivi Pr&eacute;natal</a></li>
+                    <li><a href="dentiste.html">Dentisterie</a></li>
+                    <li><a href="consultationGeneral.html">Medicine General</a></li>
+                </ul>
+            </div>
+
+            <div class="footercol">
+                <h4>Liens utiles</h4>
+                <ul>
+                    <li><a href="prendreRendez.html">Prendre rendez vous</a></li>
+                    <li><a href="index.html">A propos</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+
+            <div class="footercol">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="#">5, Mahotiere, Carrefour</a></li>
+                    <li><a href="">+509 32 22 10 00</a></li>
+                    <li><a href="">complexe@gmail.com</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footerB">copy right 2026 Complexe M&eacute;dical La Perle des Antilles</div>
+    </footer>
+
+    <!--le js pour le menu hamburger-->
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLiens = document.getElementById('navLiens');
+
+        hamburger.addEventListener('click', function () {
+            const isOpen = navLiens.classList.toggle('open');
+            hamburger.classList.toggle('open', isOpen);
+            hamburger.setAttribute('aria-expanded', isOpen);
+        });
+
+        navLiens.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                navLiens.classList.remove('open');
+                hamburger.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!hamburger.contains(e.target) && !navLiens.contains(e.target)) {
+                navLiens.classList.remove('open');
+                hamburger.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', 'false');
+            }
+        });
+    </script>
+
+</body>
+
+</html>

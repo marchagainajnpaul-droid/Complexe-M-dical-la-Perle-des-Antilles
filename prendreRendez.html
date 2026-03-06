@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Prendre un rendez-vous</title>
+    
+    <style>
+       *{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+       }
+
+       body{
+        background-color: #f5f5f5;
+        color: #222;
+        font-size:1rem;
+        line-height: 1.5;
+       }
+
+       .container{
+        width: 90%;
+        max-width: 30rem;
+        margin: 5vh auto;
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.1);
+       }
+
+       h1{
+        text-align: center;
+        color: #4CAF50;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+       }
+
+       label{
+        display: block;
+        margin-top: 1.5rem;
+        font-weight: bold;
+        font-size: 1rem;
+       }
+
+       input,select,textarea{
+        width: 100%;
+        padding: 0.8rem;
+        margin-top: 0.5rem;
+        border: 0.1rem solid #ccc;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+       }
+
+       select{
+        cursor: pointer;
+       }
+
+       button{
+        width: 100%;
+        padding: 1rem;
+        margin-top: 2rem;
+        background: linear-gradient(90deg,#4CAF50,#66BB6A);
+        border: none;
+        border-radius: 0.5rem;
+        color: white;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: 0.3s;
+       }
+
+       button:hover{
+        background: linear-gradient(90deg,#66BB6A,#4CAF50);
+
+       }
+
+       @media(min-width:768px){
+        .container{
+            width: 70%;
+            padding: 3rem;
+        }
+
+        h1{
+            font-size: 2.5rem;
+        }
+
+        input,select,textarea{
+            font-size: 1.1rem;
+            padding: 1rem;
+        }
+
+        button{
+            font-size: 1.2rem;
+            padding: 1rem;
+        }
+       }
+
+       @media(min-width:1200px){
+        .container{
+            width: 50%;
+        }
+       }
+       
+    </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Prendre un rendez-vous</h1>
+            <form >
+                <label for="nom">Nom complet</label>
+                <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="email" required>
+
+                <label for="telephone">T&eacute;l&eacute;phone</label>
+                <input type="tel" id="telephone" name="telephone" placeholder="votre numero de telephone">
+
+                <label for="service">Service Clinique</label>
+                <select id="service" name="service" required>
+                    <option value=""disabled selected>Choisissezun service</option>
+                    <option value="pediatrie">P&eacute;diatrie</option>
+                    <option value="prenatal">Pr&eacute;natal</option>
+                    <option value="dentiste">Dentiste</option>
+                    <option value="consultation">Consultation g&eacute;n&eacute;ral</option>
+                </select>
+
+                <label for="date">Date du rendez-vous</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="4" placeholder="Votre message...."></textarea>
+
+                <button type="submit">Prendre rendez-vous</button>
+            </form>
+        </div>
+    </body>
+</html>

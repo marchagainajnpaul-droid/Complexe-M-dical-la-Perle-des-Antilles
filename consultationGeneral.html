@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultation G&eacute;n&eacute;ral-Complexe M&eacute;dical la Perle des Antilles</title>
+
+
+    <style>
+        /*le css qui accompage cette page de consulation*/
+        :root {
+            --bleu: #1e3a5f;
+            --bleu-clair: #3b82f6;
+            --bleu-pale: #eff6ff;
+            --cyan: #0891b2;
+            --blanc: #f8fafc;
+            --noir: #0f172a;
+            --gris: #64748b;
+        }
+
+        .topbar {
+            background: var(--bleu);
+            padding: 0.4rem 2rem;
+            display: flex;
+            justify-content: space-around;
+            font-size: 0.78rem;
+            color: #bfdbfe;
+        }
+
+        .topbar span {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        nav.main {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 3rem;
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            background: rgba(248, 250, 252, 0.97);
+            backdrop-filter: blur(12px);
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+        }
+
+        .logo h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            color: var(--bleu);
+            line-height: 1.2;
+        }
+
+        .logo span {
+            display: block;
+            font-size: 0.7rem;
+            color: var(--bleu-clair);
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+
+        .navLiens {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .navLiens a {
+            text-decoration: none;
+            color: var(--noir);
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .navLiens a:hover,
+        .navLiens a.active {
+            color: var(--bleu);
+        }
+
+        .btnRdv {
+            background: var(--bleu);
+            color: white;
+            padding: 0.55rem 1.4rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 14px rgba(30, 58, 95, 0.3);
+        }
+
+        .btnRdv:hover {
+            background: var(--bleu-clair);
+            transform: translateY(-2px);
+        }
+
+        /*menu hamburger pou telephone*/
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 6px;
+            z-index: 200;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 2.5px;
+            background: var(--bleu);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .hamburger.open span:nth-child(1) {
+            transform: translateY(7.5px) rotate(45deg);
+        }
+
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.open span:nth-child(3) {
+            transform: translateY(-7.5px) rotate(-45deg);
+        }
+
+        /* l'entete ou se trouve l'image*/
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            position: relative;
+
+        }
+
+        .hero-left {
+            width: 100%;
+            padding: 6rem 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: url("images/consul4b.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .hero-left::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(147, 197, 253, 0.15);
+            border: 1px solid rgba(147, 197, 253, 0.3);
+            color: #040b13;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+            animation: fadeUp 0.8s ease forwards;
+        }
+
+        .hero-left h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 4.5vw, 4rem);
+            font-weight: 300;
+            color: white;
+            line-height: 1.15;
+            position: relative;
+            z-index: 2;
+            animation: fadeUp 0.8s ease 0.2s both;
+        }
+
+        .hero-left h1 em {
+            font-style: italic;
+            color: #93c5fd;
+        }
+
+        .hero-left p {
+            color: #071322;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin: 1.5rem 0 2.5rem;
+            max-width: 450px;
+            position: relative;
+            z-index: 2;
+            animation: fadeUp 0.8s ease 0.4s both;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+            animation: fadeUp 0.8s ease 0.6s both;
+        }
+
+        .hero-right {
+            background: var(--bleu-pale);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem;
+            gap: 1.5rem;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid #dbeafe;
+            box-shadow: 0 4px 20px rgba(30, 58, 95, 0.06);
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            transition: all 0.3s;
+            animation: fadeUp 0.8s ease both;
+        }
+
+        .info-card:nth-child(1) {
+            animation-delay: 0.3s;
+        }
+
+        .info-card:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .info-card:nth-child(3) {
+            animation-delay: 0.7s;
+        }
+
+        .info-card:hover {
+            transform: translateX(6px);
+            box-shadow: 0 8px 30px rgba(30, 58, 95, 0.12);
+        }
+
+        .ic-icon {
+            width: 54px;
+            height: 54px;
+            background: var(--bleu-pale);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            border: 1px solid #bfdbfe;
+        }
+
+        .ic-text h3 {
+            color: var(--bleu);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+
+        .ic-text p {
+            color: var(--gris);
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--bleu);
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .btn-ghost:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+
+
+
+        /* cta */
+        .ctasec {
+            background: linear-gradient(135deg, var(--bleu) 0%, #1e40af 100%);
+            padding: 7rem 3rem;
+            text-align: center;
+        }
+
+        .ctasec h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: white;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+
+        .ctasec p {
+            color: #bfdbfe;
+            font-size: 1.05rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .ctaBtn {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btnG {
+            background: white;
+            color: var(--bleu);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .btnG:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn-out {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+
+        .btn-out:hover {
+            border-color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        footer {
+            background: #0a1628;
+            color: white;
+            padding: 4rem 3rem 1.5rem;
+        }
+
+        .footerGrid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footercol h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            color: #93c5fd;
+        }
+
+        .footercol p,
+        .footercol ul li a {
+            color: #64748b;
+            font-size: 0.88rem;
+            line-height: 1.7;
+            text-decoration: none;
+        }
+
+        .footercol ul {
+            list-style: none;
+        }
+
+        .footercol ul li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footercol ul li a:hover {
+            color: #93c5fd;
+        }
+
+        .footerB {
+            padding-top: 1.5rem;
+            text-align: center;
+            color: #475569;
+            font-size: 0.82rem;
+        }
+
+        /* pou tablette ak laptop */
+        @media (max-width: 1024px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+                max-width: 600px;
+            }
+
+            .serGrid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            nav.main {
+                padding: 1rem 1.5rem;
+            }
+
+            .navLiens li a {
+                font-size: 0.8rem;
+                padding: 0.35rem 0.6rem;
+            }
+        }
+
+        /*pou telephone*/
+        @media (max-width: 768px) {
+
+            /* topbar */
+            .topbar {
+                flex-direction: column;
+                text-align: center;
+                font-size: 0.76rem;
+                padding: 0.5rem 1rem;
+                gap: 2px;
+            }
+
+            /* navbar */
+            nav.main {
+                padding: 0.8rem 1rem;
+                position: relative;
+            }
+
+            /* hamburger visible */
+            .hamburger {
+                display: flex;
+            }
+
+            /* menu mobile */
+            .navLiens {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                background: rgba(248, 250, 252, 0.98);
+                padding: 0.5rem 0;
+                border-top: 1px solid #e2e8f0;
+                box-shadow: 0 8px 24px rgba(30, 58, 95, 0.1);
+                order: 10;
+                gap: 2px;
+            }
+
+            .navLiens.open {
+                display: flex;
+            }
+
+            .navLiens li {
+                width: 100%;
+            }
+
+            .navLiens li a {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.95rem;
+                border-radius: 0;
+                border-left: 3px solid transparent;
+            }
+
+            .navLiens li a:hover,
+            .navLiens li a.active {
+                background: var(--bleu-pale);
+                color: var(--bleu);
+                border-left-color: var(--bleu-clair);
+            }
+
+            .btnRdv {
+                display: none;
+            }
+
+            /* hero */
+            .hero {
+                min-height: 80vh;
+                align-items: flex-end;
+            }
+
+            .hero-left {
+                padding: 2rem 1.5rem 3rem;
+                max-width: 100%;
+            }
+
+            .hero-left h1 {
+                font-size: 1.9rem;
+            }
+
+            .hero-left p {
+                font-size: 0.9rem;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .btn-primary,
+            .btn-ghost {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+                padding: 0.8rem 1.5rem;
+            }
+
+            /* info cards */
+            .info-section {
+                padding: 3rem 1.2rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .info-card {
+                padding: 1.2rem;
+            }
+
+            /* services */
+            .services-section {
+                padding: 3rem 1.2rem;
+            }
+
+            .services-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .serGrid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .serCard {
+                padding: 1.5rem;
+            }
+
+            /* cta */
+            .ctasec {
+                padding: 3.5rem 1.2rem;
+            }
+
+            .ctasec h2 {
+                font-size: 1.8rem;
+            }
+
+            .ctaBtn {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .ctaBtn .btnG,
+            .ctaBtn .btn-out {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+            }
+
+            /* footer */
+            footer {
+                padding: 2.5rem 1.2rem 0;
+            }
+
+            .footerGrid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero-left h1 {
+                font-size: 1.5rem;
+            }
+
+            .services-section h2,
+            .ctasec h2 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!--notre page consultation generale-->
+    <nav class="topbar">
+        <span>5, Mahotiere, Carrefour</span>
+        <span>+509 32 22 10 00</span>
+        <span>complexe@gmail.com</span>
+    </nav>
+
+    <nav class="main">
+        <a class="logo" href="index.html">
+            <div style="width: 48px; height: 48px; display: flex;"><img src="images/clinique_logo.jfif"></div>
+            <div>
+                <h1>Complexe Medical<br>La Perle des Antilles</h1>
+                <span>Votre sante, notre priorite</span>
+            </div>
+        </a>
+
+        <!--pou ouvert menu hamburger-->
+        <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="navLiens" id="navLiens">
+            <li><a href="index.html">Acceuil</a></li>
+            <li><a href="pediatre.html" class="active">Pediatrie</a></li>
+            <li><a href="prenatal.html">Prenatal</a></li>
+            <li><a href="consultationGeneral.html">Consultation</a></li>
+            <li><a href="dentiste.html">Dentiste</a></li>
+            <li><a href="faq.html">F.A.Q</a></li>
+        </ul>
+        <a href="prendreRendez.html" class="btnRdv">Prendre rendez-vous</a>
+    </nav>
+
+    <!--Banniere-->
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-left">
+            <div class="hero-badge"> M&eacute;decine G&eacute;n&eacute;rale</div>
+            <h1>Votre sant&eacute;,<br>une <em>priorit&eacute;</em><br>absolue</h1>
+            <p>Consultations m&eacute;dicales g&eacute;n&eacute;rales pour toute la famille. Diagnostic, traitement et
+                suivi par des m&eacute;decins
+                exp&eacute;riment&eacute;s dans un cadre moderne et rassurant.</p>
+            <div class="hero-ctas">
+                <a href="prendreRendez.html" class="btn-primary">Prendre rendez-vous</a>
+                <a href="#services" class="btn-ghost">Nos services</a>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="hero-right">
+            <div class="info-card">
+                <div class="ic-icon"></div>
+                <div class="ic-text">
+                    <h3>Disponibilit&eacute; &eacute;largie</h3>
+                    <p>Consultations du lundi au samedi, 7h-19h. Urgences prises en charge.</p>
+                </div>
+            </div>
+            <div class="info-card">
+                <div class="ic-icon"></div>
+                <div class="ic-text">
+                    <h3>M&eacute;decins certifi&eacute;s</h3>
+                    <p>&eacute;quipe de m&eacute;decins g&eacute;n&eacute;ralistes diplôm&eacute;s et
+                        exp&eacute;riment&eacute;s à votre service.</p>
+                </div>
+            </div>
+            <div class="info-card">
+                <div class="ic-icon"></div>
+                <div class="ic-text">
+                    <h3>Dossier m&eacute;dical num&eacute;rique</h3>
+                    <p>Suivi personnalis&eacute; de votre historique m&eacute;dical pour une meilleure prise en charge.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ctasec">
+        <h2>Prenez soi de votre sant&eacute;<br>des aujourd'hui</h2>
+        <p>Notre &eacute;quipe m&eacute;dical est pret pour vous acceuillir</p>
+        <div class="ctaBtn">
+            <a href="prendreRendez.html" class="btnG">Prendre un rendez-vous</a>
+            <a href="contact" class="btnOG">Nous contacter</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footerGrid">
+            <div class="footercol">
+                <h4>Complexe Medical La Perle des Antilles</h4>
+                <p>Des soins premium pour toute la famille, dans un contexte</p>
+            </div>
+
+            <div class="footercol">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="pediatre.html">P&eacute;diatrie</a></li>
+                    <li><a href="prenatal.html">Suivi Pr&eacute;natal</a></li>
+                    <li><a href="dentiste.html">Dentisterie</a></li>
+                    <li><a href="consultationGeneral.html">Medicine General</a></li>
+                </ul>
+            </div>
+
+            <div class="footercol">
+                <h4>Liens utiles</h4>
+                <ul>
+                    <li><a href="prendreRendez.html">Prendre rendez vous</a></li>
+                    <li><a href="index.html">A propos</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+
+            <div class="footercol">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="#">5, Mahotiere, Carrefour</a></li>
+                    <li><a href="">+509 32 22 10 00</a></li>
+                    <li><a href="">complexe@gmail.com</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footerB">copy right 2026 Complexe M&eacute;dical La Perle des Antilles</div>
+    </footer>
+
+</body>
+    <!--sa se js pou menu hanurger an -->
+<script>
+    const hamburger = document.getElementById('hamburger');
+    const navLiens = document.getElementById('navLiens');
+
+    hamburger.addEventListener('click', function () {
+        const isOpen = navLiens.classList.toggle('open');
+        hamburger.classList.toggle('open', isOpen);
+        hamburger.setAttribute('aria-expanded', isOpen);
+    });
+
+    navLiens.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+            navLiens.classList.remove('open');
+            hamburger.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+        });
+    });
+
+    document.addEventListener('click', function (e) {
+        if (!hamburger.contains(e.target) && !navLiens.contains(e.target)) {
+            navLiens.classList.remove('open');
+            hamburger.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+        }
+    });
+</script>
+
+</html>

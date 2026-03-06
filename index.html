@@ -1,0 +1,472 @@
+<!DOCTYPE html> 
+<html lang="fr">
+    <head>
+            <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Complexe medical la perle des Antilles </title>
+        <!--le lien du css-->
+        <link rel="stylesheet" href="css/style.css?v=1">
+        <link rel="stylesheet" href="css/style2.css">
+        <!--le lien des icons-->
+        <link rel="stylesheet" href="icon/icon2/css/all.min.css">
+    </head>
+    <body>
+        <!--Bouton whatssap flottant-->
+        <a href="https://wa.me/50932221000" class="whatsapp-float" target="_blank" aria-label="Nous contacter sur whatsApp">
+            <i class="fa-solid fa-whatsapp"></i>
+        </a>    
+
+        <!--Modal pour le rendez-vous-->
+        <div class="modal-overlay" id="modal-overlay">
+            <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+                <button class="modal-close" id="modalClose" aria-label="Fermer">&#10005;</button>
+                <div id="modalForm">
+                    <h2 id="modalTitle">Prendre un Rendez-vous</h2>
+                    <p class="modal-sub">Remplissez le formulaire-nous vous confirmons dans 24h.</p>
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+                            <label>Pr&eacute;nom</label>
+                            <input type="text" id="prenom" placeholder="Jean" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Nom</label>
+                            <input type="text" id="nom" placeholder="Pierre" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>T&eacute;l&eacute;phone</label>
+                        <input type="tel" id="tel" placeholder="+509 xxxxxxxx">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Service</label>
+                        <select id="service-select">
+                            <option value="">Choisir un service</option>
+                            <option value="pediatrie">P&eacute;diatrie</option>
+                            <option value="prenatal">Pr&eacute;natal</option>
+                            <option value="dentiste">Dentiste</option>
+                            <option value="general">Consultation G&eacute;n&eacute;rale</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Date souhait&eacute;e</label>
+                            <input type="date" id="date-rdv">
+                        </div>
+                        <!--la personne aura la possibilite de choisir son heure-->
+                        <div class="form-group">
+                            <label>Heure pr&eacute;f&eacute;r&eacute;e</label>
+                            <select id="heure">
+                                <option value="">Choisir..</option>
+                                <option>8h-10h</option>
+                                <option>10h-12h</option>
+                                <option>12h-14h</option>
+                                <option>14h-16h</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Message(optionnel)</label>
+                        <textarea id="message" placeholder="D&eacute;crivez brievement votre motif"></textarea>
+                    </div>
+
+                    <button class="modal-submit" id="modalSubmit">Confirmer le Rendez-vous</button>
+                </div>
+
+                <div class="modal-succes" id="modalSuccess">
+                    <div class="succes-icon"><i class="fa-solid fa-check"></i></div>
+                    <h3>Rendez-vous Envoy&eacute;</h3>
+                    <p>Merci<strong id="successName"></strong>.Nous vous contacterons bientot pour confirmer votre rendez-vous</p>
+                </div>
+            </div>
+        </div>
+
+      
+        
+        <!--on l'a mis de maniere ace qu'il adapte au changement de mode.-->
+        <div class="page theme-light">
+            <header>
+                <!--notre premiere navbar-->
+                <nav class="loca">
+                   
+                        <ul>
+                            <!--les iconnes -->
+                            <li><i class="fa-solid fa-location-dot"></i> 5,Mahoti&egrave;re75Carrefour</li>
+                            <li><i class="fa-solid fa-phone"></i> + 509 32221000</li>
+                            <li><i class="fa-solid fa-envelope"></i> complexe@gmail.com</li>
+                        </ul>
+                    
+                </nav>
+
+
+                <!--notre deuxieme seconde navbar-->
+                <nav class="navbar">
+
+                    <!--logo-->
+                    <a href="index.html" class="logo">
+                        <img src="images/C.png" alt="Logo">
+                        <h1>Complexe m&eacute;dical la perle des Antilles<span>  Votre sant&eacute; notre priorit&eacute;</span></h1>
+                    </a>
+
+                    
+                    <div class="actions">
+                        <!--tooltip-->
+                        <div class="tooltip">
+                            <button class="tooltip-btn" aria-label="Nos services"  ><i class="fa-solid fa-question"></i></button>
+                            <span class="tooltiptext">Notre clinique offre:P&eacute;diatrie ,Suivi pr&eacute;natal ,Dentiste,Consultation g&eacute;n&eacute;rale.</span>
+                        </div>
+
+                        <!--Dark et ligth mode-->
+                        <label class="theme-toggle" title="Mode sombre/clair">
+                            <input type="checkbox" id="themeToggle">
+                            <div class="toggle-track">
+                                <div class="toggle-thumb">
+                                    <span class="toggle-icon" id="themeIcon">0</span>
+                                </div>
+                            </div>
+                        </label>
+
+                        <div class="drop">
+                            <button><i class="fa-solid fa-language"></i></button>
+                            <div class="dropC">
+                                <button class="lang-btn active" data-lang="fr">FR</button>
+                                <button class="lang-btn" data-lang="ht">HT</button>
+                                <button class="lang-btn" data-lang="en">EN</button>
+                            </div>
+                        </div>
+                    
+                    </div>   
+                </nav>
+
+
+                <!--ce partie on trouve tous ce qu'il y avoir avec les  autres pages a visiter-->
+                <nav class="message">
+                    <ul class="messagel">
+                        <li><a href="index.html" class="active">Acceuil</a></li>
+                        <li>
+                            <input type="checkbox" id="serv">
+                            <label for="serv"><a href="#service">Service</a><i class="fa-solid fa-angle-down"></i></label>
+
+                            <div class="er"><a href="#service">Service</a></div>
+
+                            <div class="sercive">
+                                <!--un dropdown-->
+                            <ul class="dropdown">
+                                <li><a href="pediatre.html">P&eacute;diatrie</a></li>
+                                <li><a href="prenatal.html">P&eacute;natal</a></li>
+                                <li><a href="consultationGeneral.html">Consultation g&eacute;n&eacute;rale</a></li>
+                                <li><a href="dentiste.html">Dentiste</a></li>
+                            </ul></div>
+                        </li>
+                        <li><a href="#propos">&Agrave; propos</a></li>
+                        <li><a href="#secteur1">Contact</a></li>
+                        <li><a href="faq.html">F.A.Q</a></li>
+                        <li><button id="openModal" class="translate" style="background: var(--surface); color:var( --modal-overlay ); border-radius: 3rem; padding: 0.5em; border: 1px solid var(--modal-overlay);"  >Prendre un rendez-vous</button> </li>
+
+                        
+                    </ul>
+                </nav>
+                <!--le section baniere la on trouve les images qui passe en inimation-->
+                <section class="baniere">
+                    <div class="baniere2">
+                    <h1>Complexe Clinique la Perle des Antilles</h1>
+                        <div class="banniere-texte">
+                            <p class="translate" data-fr="Des soins medicaux premium pour toute la famille" data-ht="Yon swen medical premyom pou tout fanmi a" data-en="Premium medical care for the whole family">Des soins medicaux pour toute la famille</p>
+                            <p>Sant&eacute; - Confiance - P&eacute;rs&eacute;v&eacute;rance</p>
+                            <div class="banniere-bouton"></div>
+                                <button id="openModal2" class="bouton btn-primary translate" data-fr="Prendre un rendez-vous" data-ht="Pran yon randevou" data-en="Book an appointment"><a href="prendreRendez.html">Prendre un rendez-vous</a> </button>
+                                <button class="bouton"><a href="Contact">Contact</a></button>
+                            </div>    
+                        </div>    
+                    </div>
+                </section>
+            </header>
+
+            <!--le corps de notre page-->
+            <main>
+                <!--ici on a les services proposes par notre clinique-->
+                <section class="service" id="sercive">
+                    <div class="carte" id="carte-1">
+                       <img src="images/w3.jfif">
+                       <div class="back" id="back-1">
+                            <i class="fa-solid fa-baby"></i>
+                            <h2>P&eacute;diatrie</h2>
+                            <h2>pr&eacute;-natal</h2>
+                            <p>Un sercive excellement pour la suivie de votre grossese et votre enfants.</p>
+                            <a href="pediatre.html" class="btn btn-outline translate" data-fr="En savoir plus" data-ht="Li plis" data-en="Learn more">En savoir plus</a>
+                       </div>
+                    </div>
+
+                    <div class="carte" id="carte-2">
+                        <img src="images/dentiste2.jpg">
+                        <div class="back" id="back-2">
+                            <i class="fa-solid fa-tooth"></i>
+                            <h2>Dentiste</h2>
+                            <p>Pour le meilleur soins de sante des dents et une bonne sante.</p>
+                            <a href="dentiste.html" class="btn btn-outline translate" data-fr="En savoir plus" data-ht="Li plus" data-en="Learn more">En savoir plus</a>
+                        </div>
+                    </div>
+
+                    <div class="carte" id="carte-3">
+                        <img src="images/w2.jfif">
+                        <div class="back" id="back-3">
+                            <i class="fa-solid fa-user-doctor"></i>
+                            <h3>consultation g&eacute;n&eacute;rale.</h3>
+                            <p>Une meuilleure approche pour vous sentir bien.</p>
+                            <a href="consultationGeneral.html" class="btn btn-outline translate" data-fr="En savoir plus" data-ht="li plus" data-en="Learn more">En savoi plus</a>
+                        </div>
+                    </div>
+                </section>    
+                <!--ces donnes sont pour le telephones-->
+                  <h2 class="h2">Nos services</h2>
+
+                    <section class="tele">
+                        
+                        <!--les cartes pour le tele et tablette-->
+                        <div class="card">
+                        <img src="images/w3.jfif">
+                        <div class="telb">
+                             <i class="fa-solid fa-baby"></i>
+                             <h3>P&eacute;diatrie </h3>
+                             <h3>P&eacute;natal</h3>
+                            
+                        </div>
+                        </div>
+
+                        <div class="card">
+                        <img src="images/dentiste2.jpg">
+                        <div class="telb">   
+                            <i class="fa-solid fa-tooth"></i>
+                            <h3>Dentiste</h3>
+                        </div>    
+                        </div>
+
+                        <div class="card">   
+                         <img src="images/w2.jfif">
+                         <div class="telb">
+                            <i class="fa-solid fa-user-doctor"></i>
+                            <h3>Consultation g&eacute;n&eacute;rale</h3>
+                         </div>   
+                        </div>
+
+                    </section>
+                
+                <!--les donnes sur le clinique-->
+                <section class="propos" id="propos">
+                      <div class="p2">
+                         <div class="p2a"><h2>Complexe medical la Perle des Antilles</h2>
+                         <p>Ce clinique offre des soins speciales pour les futurs mamans les enfants ainsi que les adultes nous vous aidons avec des med&eacute;cins de qualit&eacute; et performants  </p></div>
+                      </div>
+
+                      <div class="p3">
+                        <div class="p3a">
+                        <img src="images/consul4b.jpg"></div>
+                      </div>
+                </section>
+
+                <!--pour qu'on puisse nous contactez-->
+                <section class="contact">
+                    <div class="secteur1" id="secteur1">
+                        <div class="ekriti">
+                            <h2>Contactez-nous</h2>
+                            <p>prenez rendez vous avec nous faire une consultation.</p>
+                            <p><a href="pediatre.html">P&eacute;diatrie</a></p>
+                            <p><a href="prenatal.html">Pr&eacute;natal</a></p>
+                            <p><a href="dentiste.html">Dentiste</a></p>
+                            <p><a href="consultationGeneral.html">Consultation g&eacute;naral</a></p>
+                            <p>+509 36 47 55 78</p>
+                            <p>complexemediclaperledesantillesg@mil.com</p>
+                            <button class="bouton"><a href="#">Contact-nous</a></button>
+                        </div>    
+                    </div>   
+                    <!-- ceci donne les donnes pour une prise de rendez-vous-->
+                    <div class="secteur2">
+                        <div class="donne">
+                            <h2>Prendre un rendez-vous</h2>
+                            <p>Votre sant&eacute; est notre priorite. </p>
+                            <p>Prenez rendez-vous facilement avec notre &eacute;quipe m&eacute;dicale qualifi&eacute;e afin de b&eacute;n&eacute;ficier
+                                de soins attentifs, rapides et personnalis&eacute;s.
+                            </p>
+                            <p>Remplissez le formulaire ci-dessous et nous vous contacterons dans les plus brefs d&eacute;lais pour confirmer votre rendez-vous.</p>
+
+                            <div class="b">
+                                <button class="bouton"><a href="prendreRendez.html">Prendre un rendez-vous</a></button>
+                                <button class="bouton"><a href="#">Nos medecins</a></button>
+                            </div>        
+                        </div>
+                    </div>
+                </section>
+            
+            </main>
+
+            <!--notre pied de page-->
+            <footer class="footer">
+                <section class="footer1">
+                    <!--pour faire le grid-->
+                    <div class="footer-grid">
+                        <div class="footer-col">
+                            <h3 class="translate" data-fr="Complexe Medical" data-ht="Kompleks Medikal" data-en="Medical Comlex">Complexe M&eacute;dical</h3>
+                            <span class="translate" data-fr="La Perle des Antilles" data-ht="Pel Antiy" data-en="La Perle des Antilles">La Perle des Antilles</span>
+                            <p class="translate" data-fr="Des soins premium pour toute la famille,dans un cadre moderne et rassurant."
+                            data-ht="Yon swen premyom pou tout fanmi a,nan yon kad moden ak rasiran."
+                            data-en="Premium care for the whole family, in a modern and reassuring environment.">Des soins premium pour toute la famille, dans un cadre moderne et rassurant.</p>
+                        </div>
+
+                        <div class="footer-col">
+                            <h4 class="translate" data-fr="Services" data-ht="Sevis" data-en="Services">Services</h4>
+                                <ul>
+                                    <li><a href="pediatre.html" class="translate" data-fr="Pediatrie" data-ht="Pedyatri" data-en="Pediatrics">Pediatrie</a></li>
+                                    <li><a href="prenatal.html" class="translate" data-fr="Suivi Prenatal" data-ht="Swiv Groses" data-en="Prenatal Care">Suivi Prenatal</a></li>
+                                    <li><a href="dentiste.html" class="translate" data-fr="Dentisterie" data-ht="Dantis" data-en="Dentistry">Dentisterie</a></li>
+                                    <li><a href="consultationGeneral.html" class="translate" data-fr="Medecine Generale" data-ht="Medzin Jeneral" data-en="General Medicine">Medecine General</a></li>
+                                </ul>
+                        </div>
+
+                        <div class="footer-col">
+                            <h4 class="translate" data-fr="Liens Utiles" data-ht="Lyen Util" data-en="Useful Links">Liens utiles</h4>
+                            <ul>
+                                <li><a href="#contact" class="translate" data-fr="Prendre un rendez-vous" data-ht="Pran yon randevou">Prendre un rendez-vous</a></li>
+                                <li><a href="#about" class="translate" data-fr="A propos" data-ht="Sou nou" data-en="About Us">A propos</a></li>
+                                <li><a href="faq.html" class="translate" data-fr="FAQ" data-ht="Kesyon" data-en="FAQ">FAQ</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-col">
+                            <h4 class="translate" data-fr="Contact" data-ht="kontakte" data-en="contact">Contact</h4>
+                                <ul>
+                                    <li><i class="fa-solid fa-map-marker-alt"></i><span class="translate" data-fr="5, Mahotiere, Carrefour" data-ht="5, Mahotye, Kafou" data-en="5, Mahotiere, Carrefour">5, Mahotiere,Carrefour</span></li>
+                                    <li><i class="fa-solid fa-phone-alt"></i>+509 36 47 55 78</li>
+                                    <li><i class="fa-solid fa-envelope"></i> contact@perledesantilles.ht</li>
+                                </ul>
+                        </div>
+                    </div>
+                
+                    <!--celui qui a tout droit reserve-->
+                    <div class="footer-bottom">
+                        <p>&copy; 2026  <span class="translate" data-fr="Complexe Medical La Perle des Antilles" data-ht="Kompleks Medikal Pel Antiy" data-en="La Perle Des Antilles Medical Complex"> Clinique la Perle des Antilles</span>. Tous droits reserves</p>
+                    </div>
+
+                </section>
+            </footer>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+
+                // sombre et ligth
+                
+                const themeToggle = document.getElementById('themeToggle');
+                const themeIcon = document.getElementById('themeIcon');
+                const html = document.documentElement;
+
+                if (localStorage.getItem('theme') === 'dark') {
+                    html.setAttribute('data-theme', 'dark');
+                    themeToggle.checked = true;
+                    themeIcon.textContent = '🌙';
+                }
+
+                themeToggle.addEventListener('change', function() {
+                    if (this.checked) {
+                        html.setAttribute('data-theme', 'dark');
+                        themeIcon.textContent = '🌙';
+                        localStorage.setItem('theme', 'dark');
+                    } else {
+                        html.setAttribute('data-theme', 'light');
+                        themeIcon.textContent = '☀️';
+                        localStorage.setItem('theme', 'light');
+                    }
+                });
+
+                // le modal
+                
+                const modalOverlay = document.getElementById('modal-overlay');
+                const modalClose = document.getElementById('modalClose');
+                const modalFormEl = document.getElementById('modalForm');
+                const modalSuccessEl = document.getElementById('modalSuccess');
+                const modalSubmit = document.getElementById('modalSubmit');
+
+                function openModal() {
+                    modalOverlay.classList.add('open');
+                    modalFormEl.style.display = 'block';
+                    modalSuccessEl.style.display = 'none';
+                    document.body.style.overflow = 'hidden';
+                }
+
+                function closeModal() {
+                    modalOverlay.classList.remove('open');
+                    document.body.style.overflow = '';
+                }
+
+                ['openModal', 'openModal2', 'openModal3'].forEach(function(id) {
+                    var el = document.getElementById(id);
+                    if (el) {
+                        el.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            openModal();
+                        });
+                    }
+                });
+
+                modalClose.addEventListener('click', closeModal);
+                modalOverlay.addEventListener('click', function(e) {
+                    if (e.target === modalOverlay) closeModal();
+                });
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape') closeModal();
+                });
+
+                modalSubmit.addEventListener('click', function() {
+                    var prenom = document.getElementById('prenom').value.trim();
+                    var nom = document.getElementById('nom').value.trim();
+                    var service = document.getElementById('service-select').value;
+
+                    if (!prenom || !service) {
+                        modalSubmit.textContent = 'Veuillez remplir les champs requis';
+                        modalSubmit.style.background = '#ef4444';
+                        setTimeout(function() {
+                            modalSubmit.textContent = 'Confirmer le Rendez-vous';
+                            modalSubmit.style.background = '';
+                        }, 2000);
+                        return;
+                    }
+
+                    document.getElementById('successName').textContent = prenom + (nom ? ' ' + nom : '');
+                    modalFormEl.style.display = 'none';
+                    modalSuccessEl.style.display = 'flex';
+
+                    setTimeout(function() {
+                        ['prenom','nom','tel','service-select','date-rdv','heure','message'].forEach(function(id) {
+                            document.getElementById(id).value = '';
+                        });
+                    }, 500);
+                });
+
+                // pour faire la traduction
+                document.querySelectorAll('.lang-btn').forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        var lang = this.getAttribute('data-lang');
+                        document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
+                        this.classList.add('active');
+                        document.querySelectorAll('.translate').forEach(function(el) {
+                            var text = el.getAttribute('data-' + lang);
+                            if (text) el.textContent = text;
+                        });
+                        localStorage.setItem('lang', lang);
+                    });
+                });
+
+                var savedLang = localStorage.getItem('lang');
+                if (savedLang && savedLang !== 'fr') {
+                    var savedBtn = document.querySelector('.lang-btn[data-lang="' + savedLang + '"]');
+                    if (savedBtn) savedBtn.click();
+                }
+
+            });
+        </script>
+    </body>
+</html>

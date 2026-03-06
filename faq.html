@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>FAQ</title>
+
+        <style>
+            /*Base de la page*/
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            html{
+                scroll-behavior: smooth;
+            }
+
+            body{
+                line-height: 1.7;
+                background-color:white;
+                color: #032015;
+            }
+
+            .faq{
+                max-width: 48rem;
+                margin: auto;
+                padding: clamp(1rem,4vw,2.5rem);
+            }
+
+            .faq h1{
+                text-align: center;
+                color: #065f46;
+                margin-bottom: 2rem;
+                font-size: clamp(1.5rem,5vw,2.2rem);
+            }
+
+            /*boc question*/
+            .faq details{
+                background: white;
+                border-radius: 0.75rem;
+                padding: clam(1rem,3vw,1.4rem);
+                margin-bottom: 1rem;
+                box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+            }
+
+            /*question*/
+            .faq summary{
+                cursor: pointer;
+                font-size: 600;
+                color: #065f46;
+                font-size: clamp(1rem, 3.5vw, 1.15rem);
+                list-style: none;
+                position: relative;
+                padding-right: 1.8rem;
+            }
+
+            .faq summary::after{
+                content: "+";
+                position: absolute;
+                right: 0;
+                font-size: 1.rem;
+
+            }
+
+            .faq details[open] summary::after{
+                content: "-";
+            }
+
+            /*les reponses*/
+            .faq p{
+                margin-top: 0.8rem;
+                font-size: clamp(0.95rem, 3.5vw, 1,05rem);
+                color: #052005;
+            }
+
+            /*access*/
+            summary::-webkit-details-marker{
+                display: none;
+            }
+        </style>
+    </head>
+
+    <body>
+        <main>
+            <!--notre page faq-->
+            <section class="faq" id="faq">
+
+                <h1>Questions fr&eacute;quentes</h1>
+                <!--les questions-->
+                <details>
+                    <summary>Quels services propose la clinique?</summary>
+                    <p>La clinique propose la p&eacute;diatrie,la consultation g&eacute;n&eacute;rale,
+                         les soins pr&eacute;nataux et dentaires.</p>
+                </details>
+
+                <details>
+                    <summary>Comment prendre un rendez-vous?</summary>
+                    <p>
+                        Vous pouvez prendre rendez-vous directement &aacute; la clinique ou par t&eacute;l&eacute;phone.
+                    </p>
+                </details>
+
+                <details>
+                    <summary>La clinique est-elle ouverte le week-end?</summary>
+                    <p>Oui,la clinique est ouverte du lundi au samdedi selon les horaires .</p>
+                </details>
+
+                <details>
+                    <summary>Acceptez-vous les urgences m&eacute;dicales?</summary>
+                    <p>les urgences sont prises en charge selon la disponibilit&eacute; du personnel.</p>
+                </details>
+            </section>
+          
+        </main>
+    </body>
+</html>
