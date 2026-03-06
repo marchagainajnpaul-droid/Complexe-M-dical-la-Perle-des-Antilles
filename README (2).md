@@ -28,21 +28,22 @@ Mode sombre / clair
 
 complexe-medical/
 │
-├── index.html                  # Page d'accueil
-├── pediatre.html               # Service Pédiatrie
-├── prenatal.html               # Service Prénatal
-├── dentiste.html               # Service Dentiste
-├── consultationGeneral.html    # Consultation Générale
-├── prendreRendez.html          # Prise de rendez-vous
-├── faq.html                    # Questions fréquentes
-├── README.md                   # Ce fichier
+|_ index.html
+|_ pediatre.html 
+|_ prenatal.html 
+|_ dentiste.html 
+|
+├── consultationGeneral.html    
+├── prendreRendez.html         
+├── faq.html                    
+├── README.md                  
 │
 ├── css/
-│   ├── style.css               # Styles globaux + thème
-│   └── style2.css              # Styles navbar partagée
+│   ├── style.css              
+│   └── style2.css              
 │
 ├── images/
-│   ├── C.png                   # Logo
+│   ├── C.png
 │   ├── dentiste2.jpg
 │   ├── bebe2.jpg
 │   ├── consul4b.jpg
