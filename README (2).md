@@ -28,11 +28,10 @@ Mode sombre / clair
 
 complexe-medical/
 │
-|_ index.html
-|_ pediatre.html 
-|_ prenatal.html 
-|_ dentiste.html 
-|
+├── index.html                 
+├── pediatre.html              
+├── prenatal.html               
+├── dentiste.html  
 ├── consultationGeneral.html    
 ├── prendreRendez.html         
 ├── faq.html                    
@@ -47,13 +46,13 @@ complexe-medical/
 │   ├── dentiste2.jpg
 │   ├── bebe2.jpg
 │   ├── consul4b.jpg
-│   └── ...                     # Autres images
+│   └── ...                    
 │
 └── icon/
     └── icon2/
         └── css/
-            └── all.min.css     # Font Awesome icons
-```
+            └── all.min.css     
+
 
 
 
@@ -68,7 +67,7 @@ complexe-medical/
 | Bouton WhatsApp    | Accès rapide via flottant                            |
 | Bannière animée    | Slideshow d'images en CSS pur                        |
 
----
+
 
 ##  Pages
 
